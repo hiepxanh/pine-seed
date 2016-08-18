@@ -1,0 +1,24 @@
+{
+  "name": "pipeseed",
+  "version": "1.0.0",
+  "description": "server practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiepxanh/pine-seed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiepxanh/pine-seed/issues"
+  },
+  "homepage": "https://github.com/hiepxanh/pine-seed#readme",
+  "dependencies": {
+    "config": "^1.21.0",
+    "express": "^4.14.0",
+    "winston": "^2.2.0"
+  }
+}

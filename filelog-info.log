@@ -1,0 +1,20 @@
+{"level":"info","message":"Hello distributed log files!","timestamp":"2016-08-18T06:32:14.498Z"}
+{"level":"info","message":"Hello again distributed logs","timestamp":"2016-08-18T06:32:14.502Z"}
+{"level":"error","message":"Hello some bug comming!","timestamp":"2016-08-18T06:32:14.503Z"}
+{"level":"info","message":"Hello distributed log files! after removed","timestamp":"2016-08-18T06:32:14.504Z"}
+{"level":"info","message":"Hello again distributed logs  after removed","timestamp":"2016-08-18T06:32:14.504Z"}
+{"level":"info","message":"Hello distributed log files!","timestamp":"2016-08-18T06:33:00.324Z"}
+{"level":"info","message":"Hello again distributed logs","timestamp":"2016-08-18T06:33:00.335Z"}
+{"level":"error","message":"Hello some bug comming!","timestamp":"2016-08-18T06:33:00.336Z"}
+{"level":"info","message":"Hello distributed log files! after removed","timestamp":"2016-08-18T06:33:00.337Z"}
+{"level":"info","message":"Hello again distributed logs  after removed","timestamp":"2016-08-18T06:33:00.337Z"}
+{"level":"info","message":"Hello distributed log files!","timestamp":"2016-08-18T07:50:55.542Z"}
+{"level":"info","message":"Hello again distributed logs","timestamp":"2016-08-18T07:50:55.545Z"}
+{"level":"error","message":"Hello some bug comming!","timestamp":"2016-08-18T07:50:55.546Z"}
+{"level":"info","message":"Hello distributed log files! after removed","timestamp":"2016-08-18T07:50:55.547Z"}
+{"level":"info","message":"Hello again distributed logs  after removed","timestamp":"2016-08-18T07:50:55.547Z"}
+{"level":"info","message":"Hello distributed log files!","timestamp":"2016-08-18T07:54:36.604Z"}
+{"level":"info","message":"Hello again distributed logs","timestamp":"2016-08-18T07:54:36.608Z"}
+{"level":"error","message":"Hello some bug comming!","timestamp":"2016-08-18T07:54:36.608Z"}
+{"level":"info","message":"Hello distributed log files! after removed","timestamp":"2016-08-18T07:54:36.610Z"}
+{"level":"info","message":"Hello again distributed logs  after removed","timestamp":"2016-08-18T07:54:36.610Z"}
