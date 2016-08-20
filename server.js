@@ -5,9 +5,12 @@ var fs = require('fs');
 var app = express();
 var logger = require('./helpers/logger');
 
-
+// run command  set NODE_ENV=production && node server
 if (process.env.NODE_ENV !== 'production') {
     console.log("haha it worked! Your are in Production Mode")
+}
+else if (process.env.NODE_ENV !== 'shit') {
+  console.log("haha it worked! Your are in Shit Mode")
 }
 
 var server = app.listen('3000', function () {
