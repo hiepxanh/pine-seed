@@ -1,6 +1,3 @@
 {
-    "logs": {
-        "level": "debug",
-        "handleExceptions": false
-    }
+      "global":"tao han ca the gioi enviroment is ativating"
 }

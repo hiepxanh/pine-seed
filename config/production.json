@@ -1,0 +1,7 @@
+{
+    "logs": {
+        "level": "debug",
+        "handleExceptions": false
+      },
+      "messages":"production enviroment is ativating"
+}

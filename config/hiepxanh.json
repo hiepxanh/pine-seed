@@ -1,0 +1,8 @@
+{
+    "logs": {
+        "level": "debug",
+        "handleExceptions": false
+      },
+      "messages":"hiepxanh enviroment is ativating",
+      "global":"tao han ca the gioi hiepxanh enviroment is ativating"
+}

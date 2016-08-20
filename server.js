@@ -4,15 +4,15 @@ var express = require('express');
 var fs = require('fs');
 var app = express();
 var logger = require('./helpers/logger');
+var config = require('config');
+
 
 // run command  set NODE_ENV=production && node server
-if (process.env.NODE_ENV !== 'production') {
-    console.log("haha it worked! Your are in Production Mode")
-}
-else if (process.env.NODE_ENV !== 'shit') {
-  console.log("haha it worked! Your are in Shit Mode")
-}
-
+console.log('NODE_ENV: ' + config.util.getEnv('NODE_ENV'));
+console.log('NODE_CONFIG_DIR: ' + config.util.getEnv('NODE_CONFIG_DIR'));
+console.log(config.get('messages'));
+console.log(config.get('global'));
+// console.log("second:"+process.env.mode)
 var server = app.listen('3000', function () {
     var host = server.address().address;
     var port = server.address().port;
