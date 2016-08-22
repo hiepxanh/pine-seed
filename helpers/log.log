@@ -1,8 +1,0 @@
-{"level":"info","message":"Hello distributed log files!","timestamp":"2016-08-18T06:22:30.111Z"}
-{"level":"info","message":"Hello again distributed logs","timestamp":"2016-08-18T06:22:30.114Z"}
-{"level":"info","message":"Hello distributed log files!","timestamp":"2016-08-18T06:23:20.962Z"}
-{"level":"info","message":"Hello again distributed logs","timestamp":"2016-08-18T06:23:20.973Z"}
-{"level":"info","message":"Hello distributed log files!","timestamp":"2016-08-18T06:24:08.460Z"}
-{"level":"info","message":"Hello again distributed logs","timestamp":"2016-08-18T06:24:08.469Z"}
-{"level":"info","message":"Hello distributed log files! after removed","timestamp":"2016-08-18T06:24:08.470Z"}
-{"level":"info","message":"Hello again distributed logs  after removed","timestamp":"2016-08-18T06:24:08.470Z"}

@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/hiepxanh/pine-seed#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "config": "^1.21.0",
     "express": "^4.14.0",
+    "mongoose": "^4.5.9",
     "winston": "^2.2.0"
   }
 }
