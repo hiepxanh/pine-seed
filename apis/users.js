@@ -8,11 +8,14 @@ router.post('/create', function(req,res) {
     if (error) {
       return res.status(406).send(JSON.stringify({error}));
     }
-    delete new_user['salt']
-    delete new_user['password']
+    // remove security attributes
+    new_user = user.toObject();
+    if (new_user) {
+            delete new_user.hashed_password;
+            delete new_user.salt;
+        }
     res.send(JSON.stringify(new_user))
   })
 })
-
 
 module.exports = router;
