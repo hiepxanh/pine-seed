@@ -3,10 +3,11 @@
         "level": "debug",
         "handleExceptions": false
       },
-      "messages":"default enviroment is ativating",
-      "global":"welcome to system Default",
-      "server": {
-          "host": "0.0.0.0",
-          "port": 3000
-        }
+    "messages":"default enviroment is ativating",
+    "global":"welcome to system Default",
+    "server": {
+        "host": "0.0.0.0",
+        "port": 3000
+      },
+    "secret":"ILoveYouSoMuch"
 }

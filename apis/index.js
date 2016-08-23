@@ -1,9 +1,29 @@
-var express = require('express'),
-router = express.Router();
-router.use('/api/users',require('./users'));
+var bodyParser = require('body-parser');
 
-router.get('/', function(req,res){
-  res.send(JSON.stringify({message:'Welcome to home!'}))
-});
+module.exports = function(app, express) {
 
-module.exports = router;
+  // body parse
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
+
+  // configure our app to handle CORS requests
+  app.use(function(req, res, next) {
+  	res.setHeader('Access-Control-Allow-Origin', '*');
+  	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+  	next();
+  });
+
+
+
+  // load user API
+  var userRouter = require('./users')(app,express);
+  app.use('/api',userRouter);
+
+  var router = express.Router();
+  // testing connection
+  router.get('/', function(req,res){
+    res.send(JSON.stringify({message:'Welcome to home!'}))
+  });
+return router;
+}

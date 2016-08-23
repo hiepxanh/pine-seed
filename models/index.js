@@ -6,7 +6,7 @@ config = require('config');
 
 mongoose.connect('mongodb://localhost:27017/test');
 
-//import all file in this dir, except index.js
+//import all file in this dir, except index.js and hidden file start with dot "."
 fs.readdirSync(__dirname)
 .filter(function(file){
   return (file.indexOf('.') !== 0)  && (file !== 'index.js');

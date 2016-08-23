@@ -5,22 +5,20 @@ var fs = require('fs');
 var app = express();
 var logger = require('./helpers/logger');
 var config = require('config');
-var bodyParser = require('body-parser');
 var yaml = require('js-yaml');
 var app = express();
-// body parse
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 // add-on swagger-editor
-app.use('/swagger',express.static('./node_modules/swagger-editor'))
-app.use('/',express.static('./docs'));
+app.use('/swagger',express.static('./node_modules/swagger-editor')); // phuc vu giao dien html
+app.use('/',express.static('./docs/index.html')); // dieu huong den thu muc docs va doc file ben trong
 app.get('/docs',function(req,res){
-  var docs = yaml.safeLoad(fs.readFileSync('./docs/swagger.yml','utf8'));
+  var docs = yaml.safeLoad(fs.readFileSync('./docs/swagger.yml','utf8')); // doc file JSON chua thong tin
   res.send(JSON.stringify(docs));
 });
-// import routers
-app.use(require('./apis'));
+
+// load every api in one file
+var apiRouter = require('./apis')(app,express);
+app.use('/api',apiRouter);
 
 // run command  set NODE_ENV=production && node server
 console.log('NODE_ENV: ' + config.util.getEnv('NODE_ENV'));
