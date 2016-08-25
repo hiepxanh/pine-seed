@@ -14,16 +14,22 @@ module.exports = function(app, express) {
   	next();
   });
 
-
-
+  // load test API
+  var testRouter = require('./test')(app,express);
+  app.use('/api',testRouter);
+  // load authenticate API
+  var authenticateRouter = require('./authenticate')(app,express);
+  app.use('/api/',authenticateRouter);
   // load user API
   var userRouter = require('./users')(app,express);
   app.use('/api',userRouter);
 
+
+
   var router = express.Router();
   // testing connection
   router.get('/', function(req,res){
-    res.send(JSON.stringify({message:'Welcome to home!'}))
+    res.send(JSON.stringify({message:'Welcome to api home!'}))
   });
 return router;
 }

@@ -16,7 +16,7 @@ app.get('/docs',function(req,res){
   res.send(JSON.stringify(docs));
 });
 
-// load every api in one file
+// load all api is containing in index.js file
 var apiRouter = require('./apis')(app,express);
 app.use('/api',apiRouter);
 

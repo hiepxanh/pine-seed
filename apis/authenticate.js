@@ -3,6 +3,7 @@ var db = require('../models');
 User = db.User;
 var jwt        = require('jsonwebtoken');
 var config     = require('config');
+var logger = require('../helpers/logger');
 
 // super secret for creating tokens
 var superSecret = config.get("secret");
@@ -20,19 +21,41 @@ module.exports = function(app, express) {
 			// if there is no chris user, create one
 			if (!user) {
 				var sampleUser = new User();
-
 				sampleUser.name = 'Chris';
 				sampleUser.username = 'chris';
 				sampleUser.password = 'supersecret';
+				sampleUser.save(
+					function(err) {
+						if (err) {
+							// duplicate entry
+							if (err.code == 11000)
+								return res.json({ success: false, message: 'A user with that username already exists. '});
+							else
+								return res.send(err);
+						}
 
-				sampleUser.save();
+						// return a message
+						res.json({ message: 'User sample created!' });
+					}
+				);
 			}
       else {
-				logger.debug(user);
-
 				// if there is a chris, update his password
 				user.password = 'supersecret';
-				user.save();
+				user.save(
+					function(err) {
+						if (err) {
+							// duplicate entry
+							if (err.code == 11000)
+								return res.json({ success: false, message: 'A user with that username already exists. '});
+							else
+								return res.send(err);
+						}
+
+						// return a message
+						res.json({ message: 'User sample created!' });
+					}
+				);
 			}
 
 		});
@@ -137,7 +160,7 @@ module.exports = function(app, express) {
 
 	  }
 	});
-};
+
 
 return apiRouter;
-};
+}
