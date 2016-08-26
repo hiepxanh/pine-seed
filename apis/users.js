@@ -14,7 +14,6 @@ module.exports = function(app, express) {
 	// on routes that end in /users
 	// ----------------------------------------------------
 	apiRouter.route('/users')
-
 		// create a user (accessed at POST http://localhost:8080/users)
 		.post(function(req, res) {
 
@@ -37,13 +36,35 @@ module.exports = function(app, express) {
 			});
 
 		})
-
-		// get all the users (accessed at GET http://localhost:8080/api/users)
 		.get(function(req, res) {
-			User.find({}, function(err, users) {
+			var limit = (req.params.limit)? parseInt(req.params.limit): 10;
+	    var skip = (req.params.page)? limit * (req.params.page - 1): 0;
+			User
+      .find()
+			.then(function(err, users) {
 				if (err) res.send(err);
 				// return the users
 				res.json(users);
+			});
+		});
+		// DONE: pagination bug.
+		// get all the users (accessed at GET http://localhost:8080/api/users)
+		// support pagination (accessed at GET http://localhost:8080/api/users/1/10)
+	apiRouter.route('/users/:page/:limit')
+		.get(function(req, res) {
+			var limit = (req.params.limit)? parseInt(req.params.limit): 10;
+	    var skip = (req.params.page)? limit * (req.params.page - 1): 0;
+			User.count({}, function(err, c) {
+        User
+        .find()
+        .skip(skip)
+        .limit(limit)
+        .sort({'_id': 'desc'})
+				.then(function(err, users) {
+					if (err) res.send(err);
+					// return the users
+					res.json(users);
+				});
 			});
 		});
 
