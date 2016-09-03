@@ -37,3 +37,6 @@ var server = app.listen(config.get('server.port'), config.get('server.host'), fu
 app.get('/hello', function(req, res){
     res.send(JSON.stringify({'hello': 'world !!!'}));
 });
+
+
+module.exports = server; // for testing
