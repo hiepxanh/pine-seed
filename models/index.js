@@ -4,6 +4,7 @@ mongoose = require('mongoose'),
 db = {},
 config = require('config');
 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.get('db'));
 
 //import all file in this dir, except index.js and hidden file start with dot "."

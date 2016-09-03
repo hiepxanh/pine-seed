@@ -1,7 +1,7 @@
 {
     "db":"mongodb://localhost:27017/test",
     "logs": {
-        "level": "debug",
+        "level": "test",
         "handleExceptions": false
       },
     "messages":"testing enviroment is ativating",
