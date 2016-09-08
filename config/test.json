@@ -1,11 +1,11 @@
 {
     "db":"mongodb://localhost:27017/test",
     "logs": {
-        "level": "test",
+        "level": "info",
         "handleExceptions": false
       },
-    "messages":"testing enviroment is ativating",
-    "global":"welcome to system TEST, good hunt",
+    "messages":"Bug-hunting enviroment is ativating",
+    "global":"welcome Commander HiepXanh to system TEST, good hunt",
     "server": {
         "host": "0.0.0.0",
         "port": 3000

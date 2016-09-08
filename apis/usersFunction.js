@@ -13,17 +13,25 @@ function getUsers(req, res) {
 // create a user (accessed at POST http://localhost:8080/users)
 function createUser(req, res) {
 
-  var user = new User(req.body);		// create a new instance of the User model
-  user.save((err,user) => {
-    if (err,user) {
+  var newUser = new User(req.body);		// create a new instance of the User model
+  newUser.save((err,user) => {
+    if (err) {
       // duplicate entry
-      if (err.code == 11000)
+      if (err.code == 11000) {
         return res.json({ success: false, message: 'A user with that username already exists. '});
-      else
+      } else {
         return res.send(err);
-    }
-    // return a message
-    res.json({ message: 'User created!',user });
+      }
+    } else {
+      // remove security attributes
+        user = user.toObject();
+        if (user) {
+            delete user.password;
+        }
+      // return a message
+      res.json({ message: 'User created!',user});
+    };
+
   });
 
 }
@@ -62,6 +70,11 @@ function updateUser (req, res) {
     // save the user
      Object.assign(user,req.body).save((err,user) => {
       if (err) res.send(err);
+      // remove security attributes
+        user = user.toObject();
+        if (user) {
+            delete user.password;
+        }
       // return a message
       res.json({ message: 'User updated!',user });
     });
@@ -74,7 +87,7 @@ function deleteUser(req, res) {
 
   User.remove({_id: req.params.user_id},(err, user) => {
     if (err) res.send(err);
-    res.json({ message: 'Successfully deleted!',user});
+    res.json({ message: 'User successfully deleted!',user});
   });
 }
 
