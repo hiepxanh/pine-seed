@@ -23,7 +23,9 @@ module.exports = function(app, express) {
   // load user API
   var userRouter = require('./users')(app,express);
   app.use('/api',userRouter);
-
+  // load config API
+  var configRouter = require('./config')(app,express);
+  app.use('/api',configRouter);
 
 
   var router = express.Router();

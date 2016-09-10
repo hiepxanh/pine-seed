@@ -2,20 +2,6 @@
 process.env.NODE_ENV = 'test';
 
 let mongoose = require("mongoose");
-
-var Mongoose = require('mongoose').Mongoose;
-var mongoose = new Mongoose();
-
-var mockgoose = require('mockgoose');
-
-before(function(done) {
-    mockgoose(mongoose).then(function() {
-        mongoose.connect('mongodb://example.com/TestingDB', function(err) {
-            done(err);
-        });
-    });
-});
-
 let logger = require('../helpers/logger');
 let db = require('../models');
 User = db.User;

@@ -125,7 +125,10 @@ module.exports = function(app, express) {
 		// do logging
 		logger.debug('Somebody just came to our app!');
 	  // check header or url parameters or post parameters for token
-	  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+		if (req.get('Authorization') != undefined) {
+			logger.debug("They are using Authorization:" + req.get('Authorization'))
+	};
+	  var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.get('Authorization');
 
 	  // decode token
 	  if (token) {

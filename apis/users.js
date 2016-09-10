@@ -12,7 +12,7 @@ module.exports = function(app, express) {
 		res.json({message:"oh YEAH users API"})
 	});
 
-	// on routes that end in /users
+	// on routes that end in /api/config
 	// ----------------------------------------------------
 	apiRouter.route('/users')
 		.post(usersFunction.createUser)

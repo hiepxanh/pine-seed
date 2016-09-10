@@ -8,43 +8,252 @@ schemes:
 basePath: /api
 produces:
     - application/json
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
 paths:
-    /users/create:
+    /authenticate:
         post:
-            summary: Create a new user account
+            summary: Login API
             description: |
-                Create a new user account
+                API for User Login
+            security:
+                - Bearer: []
             parameters:
                 - name: data
                   in: body
-                  description: json body data to create new user
+                  description: json body data for user login
                   required: true
                   schema:
                       required:
+                          - name
                           - username
-                          - email
                           - password
-                          - firstname
-                          - lastname
                       properties:
+                          name:
+                              type: string
+                              description: User Full Name
                           username:
                               type: string
                               description: User Name
                           password:
                               type: string
                               description: Password of User
-                          email:
+            responses:
+                200:
+                    description: OK
+                401:
+                    description: Unauthorized
+                400:
+                    description: Bad Request
+                406:
+                    description: Not Acceptable
+                500:
+                    description: Server Internal error
+            tags:
+                - Users
+    /config:
+        get:
+            summary: Get App Configuration
+            description: |
+                Get Application Configuration
+            security:
+                - Bearer: []
+            responses:
+                200:
+                    description: OK
+                401:
+                    description: Unauthorized
+                400:
+                    description: Bad Request
+                406:
+                    description: Not Acceptable
+                500:
+                    description: Server Internal error
+            tags:
+                - Config
+        post:
+            summary: Create App Configuration
+            description: |
+                Create Application Configuration
+            security:
+                - Bearer: []
+            parameters:
+                - name: data
+                  in: body
+                  description: json body data to create app config
+                  required: true
+                  schema:
+                      type: object
+                      description: Aplication Configuration
+                      properties:
+                          config_key:
                               type: string
-                              description: Email of User
-                          firstname:
-                              type: string
-                              description: First Name
-                          lastname:
-                              type: string
-                              description: Last Name
+                              description: Config Value
             responses:
                 200:
                     description: Returns a access token
+                401:
+                    description: Unauthorized
+                400:
+                    description: Bad Request
+                406:
+                    description: Not Acceptable
+                500:
+                    description: Server Internal error
+            tags:
+                - Config
+    /users:
+        post:
+          summary: create users
+          description: |
+            API for create users
+          security:
+            - Bearer: []
+          parameters:
+            - name: data
+              in: body
+              description: json body data for create users
+              required: true
+              schema:
+                required:
+                  - name
+                  - username
+                  - password
+                properties:
+                  name:
+                    type: string
+                    description: User Full Name
+                  username:
+                    type: string
+                    description: User Name
+                  password:
+                    type: string
+                    description: Password of User
+          responses:
+            '200':
+              description: OK
+            '400':
+              description: Bad Request
+            '401':
+              description: Unauthorized
+            '406':
+              description: Not Acceptable
+            '500':
+              description: Server Internal error
+          tags:
+            - Users
+        get:
+            summary: Get list of user
+            description: |
+                Get list of user
+            security:
+                - Bearer: []
+            responses:
+                200:
+                    description: Returns a access token
+                401:
+                    description: Unauthorized
+                400:
+                    description: Bad Request
+                406:
+                    description: Not Acceptable
+                500:
+                    description: Server Internal error
+            tags:
+                - Users
+    /users/{id}:
+        get:
+            summary: Get a user
+            description: |
+                Get a user by Id
+            security:
+                - Bearer: []
+            parameters:
+                - name: id
+                  in: path
+                  description: User Id
+                  required: true
+                  type: string
+                  format: string
+            responses:
+                200:
+                    description: OK
+                401:
+                    description: Unauthorized
+                400:
+                    description: Bad Request
+                406:
+                    description: Not Acceptable
+                500:
+                    description: Server Internal error
+            tags:
+                - Users
+        put:
+            summary: Update User infomation
+            description: |
+                Update User infomation
+            security:
+                - Bearer: []
+            parameters:
+                - name: data
+                  in: body
+                  description: json body data to update User infomation
+                  required: true
+                  schema:
+                      type: object
+                      description: User infomation
+                      required:
+                        - name
+                        - username
+                        - password
+                      properties:
+                        name:
+                          type: string
+                          description: User Full Name
+                        username:
+                          type: string
+                          description: User Name
+                        password:
+                          type: string
+                          description: Password of User
+                - name: id
+                  in: path
+                  description: User Id
+                  required: true
+                  type: string
+                  format: string
+            responses:
+                200:
+                    description: OK
+                401:
+                    description: Unauthorized
+                400:
+                    description: Bad Request
+                406:
+                    description: Not Acceptable
+                500:
+                    description: Server Internal error
+            tags:
+                - Config
+        delete:
+            summary: Delete a user
+            description: |
+                Get a user by Id
+            security:
+                - Bearer: []
+            parameters:
+                - name: id
+                  in: path
+                  description: User Id
+                  required: true
+                  type: string
+                  format: string
+            responses:
+                200:
+                    description: OK
                 401:
                     description: Unauthorized
                 400:

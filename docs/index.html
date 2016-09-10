@@ -2,9 +2,20 @@
 <html>
 <head>
 <title>Swagger</title>
+
 <meta http-equiv="refresh" content="0;URL='/swagger/#/?import=/docs&no-proxy'" />
 </head>
 <body>
 <p>Waiting ...</p>
+<script>
+  function addApiKeyAuthorization(){
+      var key = encodeURIComponent( $('#input_apiKey')[0].value );
+      if(key && key.trim() != "") {
+          var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization( "Authorization", "Bearer " + key, "header" );
+          window.swaggerUi.api.clientAuthorizations.add( "bearer", apiKeyAuth );
+          log( "Set bearer token: " + key );
+      }
+    }
+</script>
 </body>
-</html>  
+</html>

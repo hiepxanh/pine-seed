@@ -10,7 +10,7 @@ var app = express();
 
 // add-on swagger-editor
 app.use('/swagger',express.static('./node_modules/swagger-editor')); // phuc vu giao dien html
-app.use('/',express.static('./docs/index.html')); // dieu huong den thu muc docs va doc file ben trong
+app.use('/',express.static('./docs')); // dieu huong den thu muc docs va doc file ben trong
 app.get('/docs',function(req,res){
   var docs = yaml.safeLoad(fs.readFileSync('./docs/swagger.yml','utf8')); // doc file JSON chua thong tin
   res.send(JSON.stringify(docs));
