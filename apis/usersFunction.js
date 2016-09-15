@@ -1,4 +1,5 @@
 var db = require('../models');
+var q = require('../queues');
 User = db.User;
 
 // get all the users (accessed at GET http://localhost:8080/api/users)
@@ -28,6 +29,15 @@ function createUser(req, res) {
         if (user) {
             delete user.password;
         }
+        // send email welcome to user
+        q.create('email', {
+            title: '[Site Admin] Thank You',
+            to: newUser.email,
+          emailContent: {
+                username: newUser.username
+            },
+          template: 'welcome'
+        }).priority('high').save();
       // return a message
       res.json({ message: 'User created!',user});
     };

@@ -16,5 +16,19 @@
         "password": null,
         "prefix": "api"
     },
+    "mailer": {
+        "from": "hiepxanh@gmail.com",
+        "host": "smtp.gmail.com",
+        "secureConnection": true,
+        "port": 465,
+        "transportMethod": "SMTP",
+        "auth": {
+            "user": "hiepxanh",
+            "pass": "eetneiztyypbfdxd"
+        },
+        "tls": {
+        "rejectUnauthorized": false
+    }
+    },
     "secret":"ILoveYouSoMuch"
 }
