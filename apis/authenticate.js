@@ -24,6 +24,7 @@ module.exports = function(app, express) {
 				sampleUser.name = 'Chris';
 				sampleUser.username = 'chris';
 				sampleUser.password = 'supersecret';
+				sampleUser.email = 'langtumotthoi@gmail.com'
 				sampleUser.save(
 					function(err) {
 						if (err) {

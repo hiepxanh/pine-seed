@@ -31,6 +31,7 @@ paths:
                           - name
                           - username
                           - password
+                          - email
                       properties:
                           name:
                               type: string
@@ -41,6 +42,13 @@ paths:
                           password:
                               type: string
                               description: Password of User
+                          email:
+                              type: string
+                              description: Password of User
+                          name": "profileImage",
+                              "in": "formData",
+                              "type": "file"
+                              "description": "file to upload"
             responses:
                 200:
                     description: OK

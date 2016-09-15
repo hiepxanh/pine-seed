@@ -27,13 +27,15 @@ describe('Users', () => {
       chai.request(server)
           .post('/api/sample')
           .end(function(err, res) {
-
+            // logger.info(res.body);
             // after that, get token
             chai.request(server)
               .post('/api/authenticate')
               .send({name:"Chris",username:"chris",password:"supersecret"})
               .end(function(err, res) {
                 token = res.body.token;
+                // logger.info(res.body);
+                // logger.info(token);
                 done();
              });
           });
@@ -82,7 +84,10 @@ describe('Users', () => {
         let user = {
             name: "The King",
             username: "chris",
-            password:"blabla"
+            password:"blabla",
+            email:"king@gmail.com",
+            profileImage:"none",
+
         }
         chai.request(server)
             .post('/api/users')
@@ -104,7 +109,9 @@ describe('Users', () => {
         let user = {
           name: "The King",
           username: "Authur",
-          password:"blabla"
+          password:"blabla",
+          email:"king@gmail.com",
+          profileImage:"none",
         }
         chai.request(server)
             .post('/api/users')
@@ -125,7 +132,8 @@ describe('Users', () => {
   */
   describe('/GET/:id to /api/users/:id', () => {
       it('it should GET a user by the given id', (done) => {
-        let user = new User({ name:"The Boss",username:"authur",password:"blabla"});
+        let user = new User({ name:"The Boss",username:"authur",password:"blabla",email:"king@gmail.com",
+        profileImage:"none",});
         user.save((err, user) => {
             chai.request(server)
             .get('/api/users/' + user.id)
@@ -147,12 +155,14 @@ describe('Users', () => {
   */
   describe('/PUT/:id to /api/users/:id', () => {
       it('it should UPDATE a user given the id', (done) => {
-        let user = new User({name: "The King", username: "Arthur", password:'blabla'})
+        let user = new User({name: "The King", username: "Arthur", password:'blabla', email:"king@gmail.com",
+          profileImage:"none",})
         user.save((err, user) => {
                 chai.request(server)
                 .put('/api/users/' + user.id)
                 .set('X-access-token', token)
-                .send({name: "The Chronicles of Narnia", username: "C.S. Lewis", password:"superblabla"})
+                .send({name: "The Chronicles of Narnia", username: "C.S. Lewis", password:"superblabla", email:"king@gmail.com",
+                  profileImage:"none",})
                 .end((err, res) => {
 
                     res.should.have.status(200);
@@ -170,7 +180,7 @@ describe('Users', () => {
   */
   describe('/DELETE/:id to /api/users/:id', () => {
       it('it should DELETE a user given the id', (done) => {
-        let user = new User({name: "The King", username: "Arthur", password:'blabla'})
+        let user = new User({name: "The King", username: "Arthur", password:'blabla', email:'divedau@gmail.com'})
         user.save((err, user) => {
                 chai.request(server)
                 .delete('/api/users/' + user.id)

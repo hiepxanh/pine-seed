@@ -43,14 +43,30 @@ describe('Config', () => {
 
   describe('/GET to /api/config', function() {
 
-    it('it should GET config', function(done) {
-      chai.request(server)
-        .get('/api/config')
-        .set('x-access-token', token)
-        .end(function(err, res) {
-          res.should.have.status(200);
-          done();
-        });
+    it('it should GET config, and return an array', function(done) {
+      // let config = {blabla:"bleble"};
+      // chai.request(server)
+      //   .post('/api/config')
+      //   .set('X-access-token', token)
+      //   .send(config)
+      //   .end(function(err, res) {
+
+          chai.request(server)
+            .get('/api/config')
+            .set('X-access-token', token)
+            .end(function(err, res) {
+              // logger.info(res.body)
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.length.should.be.eql(0);
+              done();
+            });
+
+          // logger.info(res.body)
+          // res.should.have.status(200);
+          // done();
+        // });
+
     });
   });
   /*
